@@ -1,0 +1,16 @@
+services:
+  hrwebappazure:
+    build:
+      context: /Users/dgarciad/Projects/HRWebAppAzure
+      dockerfile: HRWebAppAzure/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: hrwebappazure
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - /Users/dgarciad/.aspnet/https:/root/.aspnet/https:ro
+    - /Users/dgarciad/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'
